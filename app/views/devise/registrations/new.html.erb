@@ -1,0 +1,75 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div>
+    <%= f.label :company_name, "Company Name" %><br />
+    <%= f.text_field :company_name %>
+  </div>
+
+  <div>
+    <%= f.label :address, "Address" %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :business_type, "Business Type" %><br />
+    <%= f.text_field :business_type %>
+  </div>
+
+  <div>
+    <%= f.label :additional_address_info, "Additional Address Info (optional)" %><br />
+    <%= f.text_field :additional_address_info %>
+  </div>
+
+  <div>
+    <%= f.label :city, "City" %><br />
+    <%= f.text_field :city %>
+  </div>
+
+  <div>
+    <%= f.label :postal_code, "Postal Code" %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= f.label :country, "Country" %><br />
+    <%= f.select :country, options_for_select([ "USA", "France", "Germany", "UK", "Spain", "Other" ]) %>
+  </div>
+
+  <div>
+    <%= f.label :legal_identifier_type, "Legal Identifier Type" %><br />
+    <%= f.text_field :legal_identifier_type %>
+  </div>
+
+  <div>
+    <%= f.label :shipment_reference, "CMACGM Shipment Reference (optional)" %><br />
+    <%= f.text_field :shipment_reference %>
+  </div>
+
+  <div>
+    <%= f.label :colleague_email, "Colleague Email (optional)" %><br />
+    <%= f.email_field :colleague_email %>
+  </div>
+
+  <!-- Standard Devise fields for email and password -->
+  <div>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div>
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

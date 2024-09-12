@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_09_135305) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_12_090705) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,22 +51,44 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_09_135305) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "price"
-    t.integer "category_id", null: false
-    t.boolean "active"
+  create_table "bookings", force: :cascade do |t|
+    t.string "origin"
+    t.string "destination"
+    t.date "shipment_date"
+    t.string "shipment_type"
+    t.float "weight"
+    t.float "length"
+    t.float "width"
+    t.float "height"
+    t.text "special_instructions"
+    t.string "status"
+    t.integer "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "company_type"
+    t.string "additional_address"
+    t.string "city"
+    t.string "postal_code"
+    t.string "country"
+    t.string "legal_identifier_type"
+    t.string "shipment_reference"
+    t.string "email"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -80,6 +102,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_09_135305) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "products", "categories"
+  add_foreign_key "bookings", "customers"
   add_foreign_key "stocks", "products"
 end

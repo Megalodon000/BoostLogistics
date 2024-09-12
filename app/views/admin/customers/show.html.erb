@@ -1,0 +1,66 @@
+<h1>Customer Details</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin_customer.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @admin_customer.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @admin_customer.address %>
+</p>
+
+<p>
+  <strong>Company Type:</strong>
+  <%= @admin_customer.company_type %>
+</p>
+
+<p>
+  <strong>Additional Address:</strong>
+  <%= @admin_customer.additional_address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @admin_customer.city %>
+</p>
+
+<p>
+  <strong>Postal Code:</strong>
+  <%= @admin_customer.postal_code %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @admin_customer.country %>
+</p>
+
+<p>
+  <strong>Legal Identifier Type:</strong>
+  <%= @admin_customer.legal_identifier_type %>
+</p>
+
+<p>
+  <strong>Shipment Reference:</strong>
+  <%= @admin_customer.shipment_reference %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @admin_customer.approved ? "Approved" : "Pending" %>
+</p>
+
+<%= link_to 'Edit', edit_admin_customer_path(@admin_customer), class: 'btn btn-primary' %>
+
+<% if @admin_customer.approved %>
+  <%= button_to 'Reject', reject_admin_customer_path(@admin_customer), method: :patch, class: 'btn btn-danger' %>
+<% else %>
+  <%= button_to 'Approve', approve_admin_customer_path(@admin_customer), method: :patch, class: 'btn btn-success' %>
+<% end %>
+
+<%= link_to 'Back', admin_customers_path, class: 'btn btn-secondary' %>

@@ -1,0 +1,13 @@
+<h1>Booking Details</h1>
+
+<p><strong>Origin:</strong> <%= @admin_booking.origin %></p>
+<p><strong>Destination:</strong> <%= @admin_booking.destination %></p>
+<p><strong>Shipment Date:</strong> <%= @admin_booking.shipment_date %></p>
+<p><strong>Shipment Type:</strong> <%= @admin_booking.shipment_type %></p>
+<p><strong>Weight:</strong> <%= @admin_booking.weight %></p>
+<p><strong>Dimensions:</strong> <%= @admin_booking.length %> x <%= @admin_booking.width %> x <%= @admin_booking.height %></p>
+<p><strong>Special Instructions:</strong> <%= @admin_booking.special_instructions %></p>
+<p><strong>Status:</strong> <%= @admin_booking.status %></p>
+
+<%= link_to 'Edit', edit_admin_booking_path(@admin_booking), class: 'btn btn-primary' %>
+<%= link_to 'Back', admin_bookings_path, class: 'btn btn-secondary' %>

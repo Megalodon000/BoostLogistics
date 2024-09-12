@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :products do
-      resources :stocks
+    resources :bookings
+    resources :customers do
+      member do
+        patch :approve
+        patch :reject
+      end
     end
-      resources :categories
+    resources :blogs       # Admin can manage blogs (news)
   end
+
   devise_for :admins
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -16,7 +22,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   authenticate :admin do
-    root to: "admin/#index", as: :authenticated_root
+    root to: "admin#index", as: :authenticated_root
   end
 
   get "admin" => "admin#index"
