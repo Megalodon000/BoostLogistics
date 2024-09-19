@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :bookings
-    resources :customers do
-      member do
-        patch :approve
-        patch :reject
-      end
-    end
-    resources :blogs       # Admin can manage blogs (news)
-  end
-
+  devise_for :customers
   devise_for :admins
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -21,9 +11,36 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
+  # Redirects admins to their dashboard after login
   authenticate :admin do
     root to: "admin#index", as: :authenticated_root
   end
 
+  # Redirects customers to their dashboard after login
+  authenticate :customer do
+    root to: "customer#index", as: :authenticated_customer_root
+  end
+
+  # Routes for admin
+  namespace :admin do
+    resources :trackings
+    resources :bookings
+    resources :customers do
+      member do
+        patch :approve
+        patch :reject
+      end
+    end
+    resources :blogs       # Admin can manage blogs (news)
+  end  
+
+  # Routes for customer
+  namespace :customer do
+    resources :blogs
+    resources :bookings
+    resources :trackings
+  end  
+
   get "admin" => "admin#index"
+  get "customer" => "customer#index"
 end

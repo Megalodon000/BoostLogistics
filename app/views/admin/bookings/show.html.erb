@@ -1,13 +1,20 @@
-<h1>Booking Details</h1>
+<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+  <h1 class="text-2xl font-bold mb-4">Booking Details</h1>
+  <p><strong>Origin:</strong> <%= @admin_booking.origin %></p>
+  <p><strong>Destination:</strong> <%= @admin_booking.destination %></p>
+  <p><strong>Shipment Date:</strong> <%= @admin_booking.shipment_date %></p>
+  <p><strong>Shipment Type:</strong> <%= @admin_booking.shipment_type %></p>
+  <p><strong>Weight:</strong> <%= @admin_booking.weight %></p>
+  <p><strong>Dimensions:</strong> <%= @admin_booking.length %> x <%= @admin_booking.width %> x <%= @admin_booking.height %></p>
+  <p><strong>Special Instructions:</strong> <%= @admin_booking.special_instructions %></p>
+  <p><strong>Status:</strong> <%= @admin_booking.status %></p>
 
-<p><strong>Origin:</strong> <%= @admin_booking.origin %></p>
-<p><strong>Destination:</strong> <%= @admin_booking.destination %></p>
-<p><strong>Shipment Date:</strong> <%= @admin_booking.shipment_date %></p>
-<p><strong>Shipment Type:</strong> <%= @admin_booking.shipment_type %></p>
-<p><strong>Weight:</strong> <%= @admin_booking.weight %></p>
-<p><strong>Dimensions:</strong> <%= @admin_booking.length %> x <%= @admin_booking.width %> x <%= @admin_booking.height %></p>
-<p><strong>Special Instructions:</strong> <%= @admin_booking.special_instructions %></p>
-<p><strong>Status:</strong> <%= @admin_booking.status %></p>
-
-<%= link_to 'Edit', edit_admin_booking_path(@admin_booking), class: 'btn btn-primary' %>
-<%= link_to 'Back', admin_bookings_path, class: 'btn btn-secondary' %>
+  <h2 class="text-xl font-bold mt-6">Tracking Information</h2>
+  <% @admin_trackings.each do |tracking| %>
+    <div class="bg-gray-100 p-4 rounded-lg mb-4">
+      <p><strong>Status:</strong> <%= tracking.status %></p>
+      <p><strong>Location:</strong> <%= tracking.location %></p>
+      <p><strong>Notes:</strong> <%= tracking.notes %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Blogs</h1>
+    <%= link_to "New Blog", new_customer_blog_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div class="flex flex-col w-full mt-5">
+    <div class="overflow-x-auto">
+      <div class="py-2 inline-block min-w-full">
+        <div class="overflow-x-auto">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <% @blogs.each do |blog| %>
+              <%= render 'blog', blog: blog %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

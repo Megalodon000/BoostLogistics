@@ -1,8 +1,7 @@
 <%= form_with(model: [:admin, @admin_customer], local: true) do |form| %>
   <% if @admin_customer.errors.any? %>
-    <div id="error_explanation">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
       <h2><%= pluralize(@admin_customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
       <ul>
         <% @admin_customer.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,62 +10,62 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-4">
+    <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :name, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+  <div class="mb-4">
+    <%= form.label :address, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :address, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_type %>
-    <%= form.text_field :company_type %>
+  <div class="mb-4">
+    <%= form.label :company_type, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :company_type, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :additional_address %>
-    <%= form.text_field :additional_address %>
+  <div class="mb-4">
+    <%= form.label :additional_address, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :additional_address, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <div class="mb-4">
+    <%= form.label :city, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :city, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :postal_code %>
-    <%= form.text_field :postal_code %>
+  <div class="mb-4">
+    <%= form.label :postal_code, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :postal_code, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
+  <div class="mb-4">
+    <%= form.label :country, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :country, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :legal_identifier_type %>
-    <%= form.text_field :legal_identifier_type %>
+  <div class="mb-4">
+    <%= form.label :legal_identifier_type, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :legal_identifier_type, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :shipment_reference %>
-    <%= form.text_field :shipment_reference %>
+  <div class="mb-4">
+    <%= form.label :shipment_reference, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :shipment_reference, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.label :admin_email %>
-    <%= form.text_field :admin_email %>
+  <div class="mb-4">
+    <%= form.label :admin_email, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :admin_email, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="field">
-    <%= form.check_box :approved %>
-    <%= form.label :approved, "Approved" %>
+  <div class="mb-4">
+    <%= form.check_box :approved, class: "mr-2" %>
+    <%= form.label :approved, "Approved", class: "text-sm font-medium text-gray-700" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div>
+    <%= form.submit "Save Customer", class: "bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
   </div>
 <% end %>

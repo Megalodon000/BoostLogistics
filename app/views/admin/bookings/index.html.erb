@@ -2,26 +2,26 @@
   <%= link_to "New Booking", new_admin_booking_path, class: "inline-block px-6 py-3 bg-blue-600 text-white font-medium text-center rounded-lg shadow hover:bg-blue-700 transition duration-300 ease-in-out" %>
 </div>
 
-<table class="min-w-full overflow-x-scroll">
-  <thead class="bg-white border-b">
+<table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+  <thead class="bg-gray-100 border-b">
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Origin</th>
-      <th>Destination</th>
-      <th>Status</th>
-      <th>Actions</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Name</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Email</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Origin</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Destination</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Status</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Actions</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="divide-y divide-gray-200">
     <% @admin_bookings.each do |booking| %>
-      <tr>
-        <td><%= booking.customer.name %></td>
-        <td><%= booking.customer.email %></td>
-        <td><%= booking.origin %></td>
-        <td><%= booking.destination %></td>
-        <td><%= booking.status %></td>
-        <td>
+      <tr class="bg-white">
+        <td class="px-6 py-4 whitespace-nowrap"><%= booking.customer.name %></td>
+        <td class="px-6 py-4 whitespace-nowrap"><%= booking.customer.email %></td>
+        <td class="px-6 py-4 whitespace-nowrap"><%= booking.origin %></td>
+        <td class="px-6 py-4 whitespace-nowrap"><%= booking.destination %></td>
+        <td class="px-6 py-4 whitespace-nowrap"><%= booking.status %></td>
+        <td class="px-6 py-4 whitespace-nowrap flex space-x-2">
           <%= link_to "Show", admin_booking_path(booking), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
           <%= link_to "Edit", edit_admin_booking_path(booking), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" %>
           <%= button_to "Destroy", admin_booking_path(booking), method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded", data: { confirm: 'Are you sure?' } %>

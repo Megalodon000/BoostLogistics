@@ -1,0 +1,12 @@
+<!-- app/views/bookings/_booking.html.erb -->
+<div class="booking-card bg-white p-6 rounded-lg shadow-lg mb-4">
+  <h2 class="text-2xl font-bold mb-2">Booking Details</h2>
+  <p><strong>Origin:</strong> <%= booking.origin %></p>
+  <p><strong>Destination:</strong> <%= booking.destination %></p>
+  <p><strong>Shipment Date:</strong> <%= booking.shipment_date %></p>
+  <p><strong>Status:</strong> <%= booking.status %></p>
+  
+  <div class="actions mt-4">
+    <%= link_to "View", booking_path(booking), class: "bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" %>
+  </div>
+</div>
