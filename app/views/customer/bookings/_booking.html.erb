@@ -1,12 +1,57 @@
-<!-- app/views/bookings/_booking.html.erb -->
-<div class="booking-card bg-white p-6 rounded-lg shadow-lg mb-4">
-  <h2 class="text-2xl font-bold mb-2">Booking Details</h2>
-  <p><strong>Origin:</strong> <%= booking.origin %></p>
-  <p><strong>Destination:</strong> <%= booking.destination %></p>
-  <p><strong>Shipment Date:</strong> <%= booking.shipment_date %></p>
-  <p><strong>Status:</strong> <%= booking.status %></p>
-  
-  <div class="actions mt-4">
-    <%= link_to "View", booking_path(booking), class: "bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" %>
-  </div>
+<div id="<%= dom_id booking %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Origin:</strong>
+    <%= booking.origin %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Destination:</strong>
+    <%= booking.destination %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Shipment date:</strong>
+    <%= booking.shipment_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Shipment type:</strong>
+    <%= booking.shipment_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Weight:</strong>
+    <%= booking.weight %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Length:</strong>
+    <%= booking.length %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Width:</strong>
+    <%= booking.width %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Height:</strong>
+    <%= booking.height %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Special instructions:</strong>
+    <%= booking.special_instructions %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= booking.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Customer:</strong>
+    <%= booking.customer_id %>
+  </p>
+
 </div>

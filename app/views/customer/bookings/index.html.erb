@@ -1,32 +1,32 @@
-<!-- app/views/bookings/index.html.erb -->
-<div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-  <h1 class="text-4xl font-bold mb-6">My Bookings</h1>
-
-  <%= link_to "New Booking", new_customer_booking_path, class: "bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded" %>
-
-  <table class="min-w-full mt-4 bg-white shadow-md rounded-lg overflow-hidden">
-    <thead class="bg-gray-100">
-      <tr>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Origin</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Destination</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Shipment Date</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Status</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Actions</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-gray-200">
-      <% @bookings.each do |booking| %>
-        <tr class="bg-white">
-          <td class="px-6 py-4"><%= booking.origin %></td>
-          <td class="px-6 py-4"><%= booking.destination %></td>
-          <td class="px-6 py-4"><%= booking.shipment_date %></td>
-          <td class="px-6 py-4"><%= booking.status %></td>
-          <td class="px-6 py-4">
-            <%= link_to "Show", booking_path(booking), class: "text-blue-500" %> |
-            <%= link_to "Edit", edit_booking_path(booking), class: "text-blue-500" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="w-full mb-4">
+  <%= link_to "New Booking", new_customer_booking_path, class: "inline-block px-6 py-3 bg-blue-600 text-white font-medium text-center rounded-lg shadow hover:bg-blue-700 transition duration-300 ease-in-out" %>
 </div>
+
+<table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+  <thead class="bg-gray-100 border-b">
+    <tr>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Origin</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Destination</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Shipment Date</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Shipment Type</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Weight</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customer_bookings.each do |booking| %>
+      <tr class="border-b">
+        <td class="px-6 py-4 text-sm text-gray-800"><%= booking.origin %></td>
+        <td class="px-6 py-4 text-sm text-gray-800"><%= booking.destination %></td>
+        <td class="px-6 py-4 text-sm text-gray-800"><%= booking.shipment_date %></td>
+        <td class="px-6 py-4 text-sm text-gray-800"><%= booking.shipment_type %></td>
+        <td class="px-6 py-4 text-sm text-gray-800"><%= booking.weight %></td>
+        <td class="px-6 py-4 text-sm text-gray-800">
+          <%= link_to "Show", customer_booking_path(booking), class: "text-blue-600 hover:text-blue-800" %> |
+          <%= link_to "Edit", edit_customer_booking_path(booking), class: "text-green-600 hover:text-green-800" %> |
+          <%= link_to "Delete", customer_booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-600 hover:text-red-800" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

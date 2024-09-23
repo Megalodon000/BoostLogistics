@@ -7,4 +7,5 @@ class Customer < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
 
   has_many :bookings
+  has_many :trackings, through: :bookings
 end

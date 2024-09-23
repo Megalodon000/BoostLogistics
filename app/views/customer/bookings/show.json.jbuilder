@@ -1,2 +1,1 @@
-# app/views/bookings/show.json.jbuilder
-json.partial! 'bookings/customer_booking', booking: @booking
+json.partial! "customer/bookings/customer_booking", customer_booking: @customer_booking

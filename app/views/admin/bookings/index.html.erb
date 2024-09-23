@@ -1,11 +1,9 @@
-<div class="w-full mb-4">
-  <%= link_to "New Booking", new_admin_booking_path, class: "inline-block px-6 py-3 bg-blue-600 text-white font-medium text-center rounded-lg shadow hover:bg-blue-700 transition duration-300 ease-in-out" %>
-</div>
+<h1>Bookings Management</h1>
 
 <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
   <thead class="bg-gray-100 border-b">
     <tr>
-      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Name</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Customer Name</th>
       <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Email</th>
       <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Origin</th>
       <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Destination</th>
@@ -20,11 +18,15 @@
         <td class="px-6 py-4 whitespace-nowrap"><%= booking.customer.email %></td>
         <td class="px-6 py-4 whitespace-nowrap"><%= booking.origin %></td>
         <td class="px-6 py-4 whitespace-nowrap"><%= booking.destination %></td>
-        <td class="px-6 py-4 whitespace-nowrap"><%= booking.status %></td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <%= form_with model: booking, url: admin_booking_path(booking), method: :patch, class: "inline" do |f| %>
+            <%= f.select :status, ['Pending', 'Approved', 'In Progress', 'Completed'], {}, class: "bg-white border rounded px-2 py-1" %>
+            <%= f.submit "Update", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded" %>
+          <% end %>
+        </td>
         <td class="px-6 py-4 whitespace-nowrap flex space-x-2">
           <%= link_to "Show", admin_booking_path(booking), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-          <%= link_to "Edit", edit_admin_booking_path(booking), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" %>
-          <%= button_to "Destroy", admin_booking_path(booking), method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded", data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Delete", admin_booking_path(booking), method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded", data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

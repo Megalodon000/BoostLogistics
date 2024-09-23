@@ -1,20 +1,31 @@
-<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-  <h1 class="text-2xl font-bold mb-4">Booking Details</h1>
-  <p><strong>Origin:</strong> <%= @admin_booking.origin %></p>
-  <p><strong>Destination:</strong> <%= @admin_booking.destination %></p>
-  <p><strong>Shipment Date:</strong> <%= @admin_booking.shipment_date %></p>
-  <p><strong>Shipment Type:</strong> <%= @admin_booking.shipment_type %></p>
-  <p><strong>Weight:</strong> <%= @admin_booking.weight %></p>
-  <p><strong>Dimensions:</strong> <%= @admin_booking.length %> x <%= @admin_booking.width %> x <%= @admin_booking.height %></p>
-  <p><strong>Special Instructions:</strong> <%= @admin_booking.special_instructions %></p>
-  <p><strong>Status:</strong> <%= @admin_booking.status %></p>
+<h2 class="text-xl font-bold mb-4">Booking Details</h2>
+<ul>
+  <li><strong>Customer Name:</strong> <%= @admin_booking.customer.name %></li>
+  <li><strong>Email:</strong> <%= @admin_booking.customer.email %></li>
+  <li><strong>Origin:</strong> <%= @admin_booking.origin %></li>
+  <li><strong>Destination:</strong> <%= @admin_booking.destination %></li>
+  <li><strong>Shipment Type:</strong> <%= @admin_booking.shipment_type %></li>
+  <li><strong>Shipment Date:</strong> <%= @admin_booking.shipment_date %></li>
+  <li><strong>Status:</strong> <%= @admin_booking.status %></li>
+  <li><strong>Special Instructions:</strong> <%= @admin_booking.special_instructions %></li>
+</ul>
 
-  <h2 class="text-xl font-bold mt-6">Tracking Information</h2>
-  <% @admin_trackings.each do |tracking| %>
-    <div class="bg-gray-100 p-4 rounded-lg mb-4">
-      <p><strong>Status:</strong> <%= tracking.status %></p>
-      <p><strong>Location:</strong> <%= tracking.location %></p>
-      <p><strong>Notes:</strong> <%= tracking.notes %></p>
-    </div>
-  <% end %>
-</div>
+<h3 class="text-lg font-bold mt-6">Trackings</h3>
+<table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+  <thead class="bg-gray-100 border-b">
+    <tr>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Location</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Status</th>
+      <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Notes</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-200">
+    <% @admin_trackings.each do |tracking| %>
+      <tr class="bg-white">
+        <td class="px-6 py-4 whitespace-nowrap"><%= tracking.location %></td>
+        <td class="px-6 py-4 whitespace-nowrap"><%= tracking.status %></td>
+        <td class="px-6 py-4 whitespace-nowrap"><%= tracking.notes %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

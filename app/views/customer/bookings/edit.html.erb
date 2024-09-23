@@ -1,10 +1,10 @@
-<!-- app/views/bookings/edit.html.erb -->
-<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-  <h1 class="text-4xl font-bold mb-6">Edit Booking</h1>
-  
-  <%= render 'form', booking: @booking %>
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+  <h1 class="text-4xl font-bold mb-6">Editing Booking</h1>
+
+  <%= render "form", customer_booking: @customer_booking %>
 
   <div class="mt-6">
-    <%= link_to "Cancel", bookings_path, class: "text-blue-500" %>
+    <%= link_to "Show this booking", customer_booking_path(@customer_booking), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium hover:bg-gray-200" %>
+    <%= link_to "Back to bookings", customer_bookings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium hover:bg-gray-200" %>
   </div>
 </div>

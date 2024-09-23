@@ -7,14 +7,14 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Trackings</h1>
-    <%= link_to "New tracking", new_admin_tracking_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to "New tracking", new_customer_tracking_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="admin_trackings" class="min-w-full">
-    <% @admin_trackings.each do |admin_tracking| %>
-      <%= render admin_tracking %>
+  <div id="customer_trackings" class="min-w-full">
+    <% @customer_trackings.each do |customer_tracking| %>
+      <%= render customer_tracking %>
       <p>
-        <%= link_to "Show this tracking", admin_tracking_path(admin_tracking), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Show this tracking", customer_tracking_path(customer_tracking), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       </p>
     <% end %>
   </div>

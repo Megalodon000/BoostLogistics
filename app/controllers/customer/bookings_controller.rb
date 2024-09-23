@@ -1,50 +1,78 @@
 class Customer::BookingsController < CustomerController
-  before_action :set_booking, only: %i[show edit update destroy]
+  before_action :authenticate_customer!
+  before_action :set_customer_booking, only: %i[show edit update destroy]
 
+  # GET /customer/bookings or /customer/bookings.json
   def index
-    @bookings = current_customer.bookings
+    @customer_bookings = current_customer.bookings
   end
 
+  # GET /customer/bookings/1 or /customer/bookings/1.json
   def show
-    # Displays a single booking, so use `@booking`
+    @customer_trackings = @customer_booking.trackings if @customer_booking.customer == current_customer
   end
 
+  # GET /customer/bookings/new
   def new
-    @booking = current_customer.bookings.new
+    @customer_booking = current_customer.bookings.new
   end
 
-  def create
-    @booking = current_customer.bookings.new(booking_params)
-    if @booking.save
-      redirect_to customer_booking_url(@booking), notice: "Booking was successfully created."
-    else
-      render :new
-    end
-  end
-
+  # GET /customer/bookings/1/edit
   def edit
+    redirect_to customer_bookings_path, alert: "Not authorized" unless @customer_booking.customer == current_customer
   end
 
-  def update
-    if @booking.update(booking_params)
-      redirect_to customer_booking_url(@booking), notice: "Booking was successfully updated."
-    else
-      render :edit
+  # POST /customer/bookings or /customer/bookings.json
+  def create
+    @customer_booking = current_customer.bookings.new(customer_booking_params)
+
+    respond_to do |format|
+      if @customer_booking.save
+        format.html { redirect_to customer_booking_url(@customer_booking), notice: "Booking was successfully created." }
+        format.json { render :show, status: :created, location: @customer_booking }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @customer_booking.errors, status: :unprocessable_entity }
+      end
     end
   end
 
+  # PATCH/PUT /customer/bookings/1 or /customer/bookings/1.json
+  def update
+    respond_to do |format|
+      if @customer_booking.update(customer_booking_params)
+        format.html { redirect_to customer_booking_url(@customer_booking), notice: "Booking was successfully updated." }
+        format.json { render :show, status: :ok, location: @customer_booking }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @customer_booking.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /customer/bookings/1 or /customer/bookings/1.json
   def destroy
-    @booking.destroy
-    redirect_to customer_bookings_url, notice: "Booking was successfully destroyed."
+    if @customer_booking.customer == current_customer
+      @customer_booking.destroy!
+      respond_to do |format|
+        format.html { redirect_to customer_bookings_url, notice: "Booking was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to customer_bookings_path, alert: "Not authorized to delete this booking."
+    end
   end
 
   private
 
-  def set_booking
-    @booking = current_customer.bookings.find(params[:id])
-  end
+    def set_customer_booking
+      @customer_booking = current_customer.bookings.find_by(id: params[:id])
+      if @customer_booking.nil?
+        redirect_to customer_bookings_path, alert: "Booking not found or not authorized."
+      end
+    end
 
-  def booking_params
-    params.require(:booking).permit(:origin, :destination, :shipment_date, :shipment_type, :weight, :length, :width, :height, :special_instructions, :status)
-  end
+    def customer_booking_params
+      params.require(:booking).permit(:origin, :destination, :shipment_date, :shipment_type, :weight, :length, :width, :height, :special_instructions)
+    end
 end

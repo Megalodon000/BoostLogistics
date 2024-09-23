@@ -1,1 +1,1 @@
-json.partial! "admin/trackings/admin_tracking", admin_tracking: @admin_tracking
+json.partial! "customer/trackings/customer_tracking", customer_tracking: @customer_tracking

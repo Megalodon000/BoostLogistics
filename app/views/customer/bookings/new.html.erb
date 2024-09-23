@@ -1,10 +1,7 @@
-<!-- app/views/bookings/new.html.erb -->
-<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-  <h1 class="text-4xl font-bold mb-6">New Booking</h1>
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">New booking</h1>
 
-  <%= render 'form', booking: @booking %>
+  <%= render "form", customer_booking: @customer_booking %>
 
-  <div class="mt-6">
-    <%= link_to "Cancel", bookings_path, class: "text-blue-500" %>
-  </div>
+  <%= link_to "Back to bookings", customer_bookings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

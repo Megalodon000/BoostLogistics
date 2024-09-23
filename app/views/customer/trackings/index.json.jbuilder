@@ -1,1 +1,1 @@
-json.array! @admin_trackings, partial: "admin/trackings/admin_tracking", as: :admin_tracking
+json.array! @customer_trackings, partial: "customer/trackings/customer_tracking", as: :customer_tracking

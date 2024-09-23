@@ -28,7 +28,7 @@
 
   <div class="my-5">
     <%= form.label :booking_id %>
-    <%= form.text_field :booking_id, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.collection_select :booking_id, Booking.all, :id, :id, { prompt: "Select Booking" }, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

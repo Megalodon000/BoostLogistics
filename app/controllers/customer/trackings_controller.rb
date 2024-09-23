@@ -2,7 +2,7 @@ class Customer::TrackingsController < CustomerController
   before_action :set_tracking, only: %i[show]
 
   def index
-    @trackings = current_customer.trackings
+    @customer_trackings = current_customer.trackings
   end
 
   def show
@@ -12,6 +12,6 @@ class Customer::TrackingsController < CustomerController
   private
 
   def set_tracking
-    @tracking = Tracking.find(params[:id])
+    @customer_tracking = Tracking.find(params[:id])
   end
 end
