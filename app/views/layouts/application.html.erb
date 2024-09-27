@@ -6,13 +6,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-cover bg-center min-h-screen" style="background-image: url('<%= asset_path('cover_image.jpg') %>'); background-size: 100% 200%; background-position: center bottom;">
+    <main class="container mx-auto px-5 flex">
       <%= yield %>
     </main>
   </body>
